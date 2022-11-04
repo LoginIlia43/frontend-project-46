@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-//получаем абсолютный путь из относительного
-const getFullPath = filePath => path.resolve(filePath);
+const getCurrentPath = () => process.cwd();
+const getAbsolutePath = filePath => path.resolve(filePath);
 
 //парсим ссылку
 const read = filePath => readFileSync(filePath);
@@ -10,8 +10,11 @@ const parse = data => JSON.parse(data);
 
 //получаем данные из файла
 const getFileData = (filePath) => {
-    const fullPath = getFullPath(filePath);
-    const fileData = parse(read(fullPath));
+    const currentPath = getCurrentPath();
+    let fullFilePath = '';
+
+    filePath.startsWith('/') ? fullFilePath = getAbsolutePath(currentPath + filePath) : fullFilePath = getAbsolutePath(currentPath + '/' + filePath);
+    const fileData = parse(read(fullFilePath));
 
     return fileData;
 };
