@@ -1,0 +1,1 @@
+import compareFilesData from "./compareFilesData.js";
