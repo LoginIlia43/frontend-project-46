@@ -1,1 +1,3 @@
-import compareFilesData from "./compareFilesData.js";
+import compareFilesData from "./src/compareFilesData.js";
+
+export default compareFilesData;
