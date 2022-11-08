@@ -11,5 +11,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    "no-underscore-dangle": 'off',
+    "import/extensions": 'off'
   },
 };
