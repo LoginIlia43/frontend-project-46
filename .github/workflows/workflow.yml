@@ -3,7 +3,7 @@ name: lint
 on: push
 
 jobs:
-  lint:
+  linter:
     runs-on: ubuntu-latest
     steps:
     - run: make lint
