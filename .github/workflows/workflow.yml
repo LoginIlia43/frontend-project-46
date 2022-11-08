@@ -6,9 +6,5 @@ jobs:
   linter:
     runs-on: ubuntu-latest
     steps:
-<<<<<<< HEAD
-    - uses: actions/checkout@v2
-    - run: make lint
-=======
-    - run: make lint
->>>>>>> refs/remotes/origin/main
+      - uses: actions/checkout@v2
+      - run: make lint
