@@ -2,21 +2,12 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 const getCurrentPath = () => process.cwd();
-const getAbsolutePath = filePath => path.resolve(filePath);
+const getAbsolutePath = (filePath) => path.resolve(filePath);
+const getFullFilePath = (filePath) => (filePath.startsWith('/') ? getAbsolutePath(getCurrentPath() + filePath) : getAbsolutePath(`${getCurrentPath()}/${filePath}`));
 
-//парсим ссылку
-const read = filePath => readFileSync(filePath);
-const parse = data => JSON.parse(data);
+const read = (filePath) => readFileSync(filePath);
+const parse = (data) => JSON.parse(data);
 
-//получаем данные из файла
-const getFileData = (filePath) => {
-    const currentPath = getCurrentPath();
-    let fullFilePath = '';
+const getFileData = (filePath) => parse(read(filePath));
 
-    filePath.startsWith('/') ? fullFilePath = getAbsolutePath(currentPath + filePath) : fullFilePath = getAbsolutePath(currentPath + '/' + filePath);
-    const fileData = parse(read(fullFilePath));
-
-    return fileData;
-};
-
-export default getFileData;
+export { getFullFilePath, getFileData };

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander/esm.mjs';
-import getFileData from '../src/getFileData.js';
+import { getFileData, getFullFilePath } from '../src/getFileData.js';
 import compareFilesData from '../src/compareFilesData.js';
 
 const program = new Command();
@@ -12,8 +12,10 @@ program
   .argument('<file1>')
   .argument('<file2>')
   .action((file1, file2) => {
-    const data1 = getFileData(file1);
-    const data2 = getFileData(file2);
-    console.log(compareFilesData(data1, data2))
+    const file1Path = getFullFilePath(file1);
+    const file2Path = getFullFilePath(file2);
+    const data1 = getFileData(file1Path);
+    const data2 = getFileData(file2Path);
+    console.log(compareFilesData(data1, data2));
   });
 program.parse();
