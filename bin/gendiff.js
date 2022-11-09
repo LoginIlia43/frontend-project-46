@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander/esm.mjs';
-import { getFileData, getFullFilePath } from '../src/getFileData.js';
-import compareFilesData from '../src/compareFilesData.js';
 import gendiff from '../index.js';
 
 const program = new Command();
