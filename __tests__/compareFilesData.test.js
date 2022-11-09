@@ -1,4 +1,4 @@
-import { expect, test } from 'jest';
+import { expect, test } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { getFileData } from '../src/getFileData.js';
