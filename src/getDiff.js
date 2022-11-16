@@ -5,7 +5,7 @@ const getDiff = (data1, data2) => {
 
   const diff = keys.map(key => {
     if (_.isObject(data1[key]) && _.isObject(data2[key])) {
-      return { key, type: 'nested', children: newDiff(data1[key], data1[key]) };
+      return { key, type: 'nested', children: getDiff(data1[key], data1[key]) };
     }
     if (!Object.hasOwn(data1, key)) {
       return { key, type: 'added', value2: data2[key] };
