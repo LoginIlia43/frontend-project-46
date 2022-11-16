@@ -1,6 +1,6 @@
 import compareFilesData from './src/compareFilesData.js';
 import parsers from './src/parsers.js';
-import { getFullFilePath } from './src/getFileData';
+import { getFullFilePath } from './src/getFileData.js';
 
 const gendiff = (file1, file2) => {
   const file1Path = getFullFilePath(file1);
