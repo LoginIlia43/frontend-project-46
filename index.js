@@ -8,11 +8,11 @@ const gendiff = (file1, file2, format = 'stylish') => {
   const file2Path = getFullFilePath(file2);
   const data1 = parsers(file1Path);
   const data2 = parsers(file2Path);
-  const diff = getDiff (data1, data2);
+  const diff = getDiff(data1, data2);
 
   if (format === 'stylish') {
     return stylish(diff);
-  };
+  }
 };
 
 export default gendiff;

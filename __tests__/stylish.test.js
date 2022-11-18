@@ -1,9 +1,9 @@
 import { expect, test } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import getDiff from "../src/getDiff.js"
-import stylish from "../src/formatters/stylish.js"
-import parsers from "../src/parsers.js"
+import getDiff from '../src/getDiff.js';
+import stylish from '../src/formatters/stylish.js';
+import parsers from '../src/parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -57,8 +57,8 @@ const res = `{
         }
         fee: 100500
     }
-}`
+}`;
 
-test ('stylish', () => {
-  expect (stylish(diff)).toBe(res)
+test('stylish', () => {
+  expect(stylish(diff)).toBe(res);
 });
