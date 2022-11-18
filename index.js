@@ -13,6 +13,7 @@ const gendiff = (file1, file2, format = 'stylish') => {
   if (format === 'stylish') {
     return stylish(diff);
   }
+  return new Error(`Unexpected format: ${format}`);
 };
 
 export default gendiff;
