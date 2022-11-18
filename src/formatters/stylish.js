@@ -1,31 +1,29 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const getValue = (propValue, depth = 0) => {
   const indent = '    '.repeat(depth);
 
   if (!_.isObject(propValue)) {
-  return propValue;
+    return propValue;
   }
   const entries = Object.entries(propValue);
-  const result = entries.map(([key, value]) => {
-    return `    ${indent}${key}: ${getValue(value, depth + 1)}`
-  })
+  const result = entries.map(([key, value]) => `    ${indent}${key}: ${getValue(value, depth + 1)}`);
 
   return [
     '{',
     ...result,
-    indent + '}'
+    `${indent}}`,
   ].join('\n');
 };
 
-const stylish = (nodes, depth = 0) => {
+const stylish = (diff, depth = 0) => {
   const indent = '    '.repeat(depth);
-  const result = nodes.flatMap(node => {
+  const result = diff.flatMap((node) => {
     switch (node.type) {
       case 'updated':
         return [
           `  ${indent}- ${node.key}: ${getValue(node.value1, depth + 1)}`,
-          `  ${indent}+ ${node.key}: ${getValue(node.value2, depth + 1)}`
+          `  ${indent}+ ${node.key}: ${getValue(node.value2, depth + 1)}`,
         ];
       case 'unchanged':
         return `  ${indent}  ${node.key}: ${getValue(node.value1, depth + 1)}`;
@@ -35,13 +33,15 @@ const stylish = (nodes, depth = 0) => {
         return `  ${indent}+ ${node.key}: ${getValue(node.value, depth + 1)}`;
       case 'nested':
         return `  ${indent}  ${node.key}: ${stylish(node.children, depth + 1)}`;
-    };
-  })
+      default:
+        throw new Error('Unknown node.type');
+    }
+  });
 
   return [
     '{',
     ...result,
-    indent + '}'
+    `${indent}}`,
   ].join('\n');
 };
 
