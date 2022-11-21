@@ -8,7 +8,7 @@ import parsers from '../src/parsers.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const filePath = (fileName) => `${__dirname}/__fixtures__/${fileName}`;
+const filePath = (fileName) => `${__dirname}/../__fixtures__/${fileName}`;
 
 const file3 = parsers(filePath('file3.json'));
 const file4 = parsers(filePath('file4.json'));

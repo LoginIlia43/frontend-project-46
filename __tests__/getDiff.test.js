@@ -7,7 +7,7 @@ import getDiff from '../src/getDiff.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const filePath = (fileName) => `${__dirname}/__fixtures__/${fileName}`;
+const filePath = (fileName) => `${__dirname}/../__fixtures__/${fileName}`;
 
 const file3Json = parsers(filePath('file3.json'));
 const file4Json = parsers(filePath('file4.json'));
