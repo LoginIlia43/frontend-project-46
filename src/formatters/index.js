@@ -1,7 +1,6 @@
-
 import stylish from './stylish.js';
 import plain from './plain.js';
-import json from './json.js'
+import json from './json.js';
 
 const formatter = (diff, format) => {
   let chosenFormatter;
@@ -10,7 +9,7 @@ const formatter = (diff, format) => {
     chosenFormatter = stylish;
   } else if (format === 'plain') {
     chosenFormatter = plain;
-  } else if(format === 'json') {
+  } else if (format === 'json') {
     chosenFormatter = json;
   } else {
     throw new Error(`unknown format: '${format}'`);
