@@ -1,17 +1,18 @@
-import stylish from './src/formatters/stylish.js';
+import stylish from './stylish.js';
 import plain from './plain.js';
 
-const formatter = (format) => {
+const formatter = (diff, format) => {
   let chosenFormatter;
 
   if (format === 'stylish') {
     chosenFormatter = stylish;
-  }
-  if (format === 'plain') {
+  } else if (format === 'plain') {
     chosenFormatter = plain;
   } else {
-    throw new Error (`unknown format: '${format}'`);
+    throw new Error(`unknown format: '${format}'`);
   }
 
-  return chosenFormatter;
+  return chosenFormatter(diff);
 };
+
+export default formatter;
