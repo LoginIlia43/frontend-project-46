@@ -10,6 +10,9 @@ const getValue = (value) => {
   if (_.isNull(value)) {
     return 'null';
   }
+  if (_.isNumber(value)) {
+    return value;
+  }
   return `'${value}'`;
 };
 
