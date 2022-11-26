@@ -4,14 +4,11 @@ const getValue = (value) => {
   if (_.isObject(value)) {
     return '[complex value]';
   }
-  if (_.isBoolean(value)) {
+  if (_.isBoolean(value) || _.isNumber(value)) {
     return value;
   }
   if (_.isNull(value)) {
     return 'null';
-  }
-  if (_.isNumber(value)) {
-    return value;
   }
   return `'${value}'`;
 };
