@@ -17,5 +17,5 @@ const diff = getDiff(file1, file2);
 const res = parsers(filePath('result_plain.txt'));
 
 test('plain', () => {
-  expect(plain(diff) + '\n').toEqual(res);
+  expect(`${plain(diff)}\n`).toEqual(res);
 });

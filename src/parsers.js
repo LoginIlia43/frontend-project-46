@@ -4,19 +4,17 @@ import path from 'node:path';
 
 const parsers = (fullPath) => {
   const extension = path.extname(fullPath);
-  let parser;
 
   if ((extension === '.yaml') || (extension === '.yml')) {
-    parser = yaml.load;
+    return yaml.load(readFileSync(fullPath));
   }
   if (extension === '.json') {
-    parser = JSON.parse;
-  } 
+    return JSON.parse(readFileSync(fullPath));
+  }
   if (extension === '.txt') {
     return readFileSync(fullPath, 'utf-8');
   }
-
-  return parser(readFileSync(fullPath));
+  return new Error('Unknown extension');
 };
 
 export default parsers;

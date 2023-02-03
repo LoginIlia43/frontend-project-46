@@ -17,5 +17,5 @@ const diff = getDiff(file1, file2);
 const res = parsers(filePath('result_stylish.txt'));
 
 test('stylish', () => {
-  expect(stylish(diff) + '\n').toEqual(res);
+  expect(`${stylish(diff)}\n`).toEqual(res);
 });

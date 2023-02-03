@@ -3,19 +3,14 @@ import plain from './plain.js';
 import json from './json.js';
 
 const formatter = (diff, format) => {
-  let chosenFormatter;
-
   if (format === 'stylish') {
-    chosenFormatter = stylish;
-  } else if (format === 'plain') {
-    chosenFormatter = plain;
-  } else if (format === 'json') {
-    chosenFormatter = json;
-  } else {
-    throw new Error(`unknown format: '${format}'`);
+    return stylish(diff);
+  } if (format === 'plain') {
+    return plain(diff);
+  } if (format === 'json') {
+    return json(diff);
   }
-
-  return chosenFormatter(diff);
+  throw new Error(`unknown format: '${format}'`);
 };
 
 export default formatter;
