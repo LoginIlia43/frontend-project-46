@@ -15,7 +15,7 @@ const formatter = (diff, format) => {
     throw new Error(`unknown format: '${format}'`);
   }
 
-  return chosenFormatter(diff);
+  return chosenFormatter(diff) + '\n';
 };
 
 export default formatter;

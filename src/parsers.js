@@ -8,8 +8,12 @@ const parsers = (fullPath) => {
 
   if ((extension === '.yaml') || (extension === '.yml')) {
     parser = yaml.load;
-  } else {
+  }
+  if (extension === '.json') {
     parser = JSON.parse;
+  } 
+  if (extension === '.txt') {
+    return readFileSync(fullPath, 'utf-8');
   }
 
   return parser(readFileSync(fullPath));
